@@ -7,11 +7,13 @@ tags: "Configuration, Web development"
 
 What will donald trump secound term bring about!
 
-<Image
-src="https://s3.alibaba.com/my-   bucket/profile.png"
-alt="Picture of the author"
-width={500}
-height={500}
+<ImageGrid
+  columns={3} // Accepts 2, 3, or 4 columns
+  images={[
+    { src: "/photos/photo1.jpg", alt: "Photo1", href: "#" }, // 'href' is optional
+    { src: "/photos/photo2.jpg", alt: "Photo2", href: "#" },
+    { src: "/photos/photo3.jpg", alt: "Photo3"},
+  ]}
 />
 
 
