@@ -1,60 +1,205 @@
-# Nextfolio
+Nextfolio uses [custom MDX](https://github.com/1msirius/Nextfolio/blob/main/app/components/mdx.tsx) for blog posts, making it easy to include JSX components such as interactive embeds, charts, or alerts directly in your markdown content.
 
-A clean, fast, and lightweight portfolio template built with [Next.js](https://nextjs.org/), [Vercel](https://vercel.com/), and [Tailwind CSS](https://tailwindcss.com/).
+Here are some examples of using MDX:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F1msirius%2FNextfolio)
+## h2 Heading
 
-## Technologies Used
+### h3 Heading
 
-- Framework: [Next.js](https://nextjs.org/)
-- Typography: [Vercel Geist Font](https://vercel.com/font)
-- Styling: [Tailwind CSS](https://tailwindcss.com/)
-- Analytics: [Vercel Web Analytics](https://vercel.com/docs/speed-insights) and [Speed Insights](https://vercel.com/docs/speed-insights)
-- Deployment: [Vercel](https://vercel.com/)
+#### h4 Heading
 
-## Features
+##### h5 Heading
 
-- **[MDX](https://mdxjs.com/) Support**: Use Markdown with JSX components for blog posts.
-- **Light and Dark Mode Toggle**: Switch between themes for better readability.
-- **Dynamic [OG Images](https://vercel.com/docs/functions/og-image-generation)**: Auto-generate Open Graph images for sharing.
-- **SEO Optimization**: Enhance search visibility with sitemap, robots.txt, and JSON-LD schema.
-- **Dynamic Feed Generation**: Automatic dynamic [RSS](https://nextfolio-template.vercel.app/rss.xml), [Atom](https://nextfolio-template.vercel.app/atom.xml), and [JSON](https://nextfolio-template.vercel.app/feed.json) feeds.
-- **[KaTeX](https://katex.org/) Integration**: Render mathematical expressions smoothly.
-- **Performance Tracking**: Monitor web performance with [Vercel Web Analytics](https://vercel.com/docs/speed-insights) and [Speed Insights](https://vercel.com/docs/speed-insights).
-- **Interactive Embeds**: Easily embed interactive tweets and YouTube videos.
-- **Captions**: Add descriptive captions to photos, tweets, and videos.
-- **Image Grid**: Easily showcase image galleries or photos.
+## Emphasis
 
-## Installation
+**This is bold text**
 
-Nextfolio uses [pnpm](https://pnpm.io/installation) for dependency management, so ensure it is installed on your system.
+_This is italic text_
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [pnpm](https://pnpm.io/installation) to bootstrap the example:
+<del> Strikethrough </del>
+
+## Blockquotes
+
+> If today were the last day of my life, would I want to do what I am about to do today? – Steve Jobs
+
+## Links
+
+- Nextfolio is built with [Next.js](https://nextjs.org).
+- Nextfolio uses [pnpm](https://pnpm.io/) for package management.
+
+## CodeBlocks
 
 ```
-pnpm create next-app --example https://github.com/1msirius/Nextfolio my-portfolio
+// This is commented-out code
+export default function HelloWorld() {
+  return (
+    <h1>Hello, World!</h1>
+  );
+}
 ```
 
-Start the development server:
+## Images
+
+Nextfolio uses [Next.js Image](https://nextjs.org/docs/basic-features/image-optimization) in MDX for seamless image rendering:
 
 ```
-pnpm dev
+<Image
+  src="/opengraph-image.png"
+  alt="OpenGraph image"
+  width={640}
+  height={500}
+/>
 ```
 
-The server will be running at [http://localhost:3000](http://localhost:3000).
+Renders:
 
-## Configuration
+<Image
+  src="/opengraph-image.png"
+  alt="OpenGraph image"
+  width={640}
+  height={500}
+/>
 
-1. Update the site metadata and social links in `app/config.ts` to set up SEO, feeds, social links, and Open Graph settings.
-2. Update your routes in `app/sitemap.ts` for SEO optimization.
-3. Update your blog posts in the `/content` folder.
+## Image Grid
 
-For more information about configuration, follow the instructions in the [Getting Started](https://nextfolio-template.vercel.app/blog/getting-started#configuration) post.
+Nextfolio uses a custom [image grid component](https://github.com/1msirius/Nextfolio/blob/main/app/components/image-grid.tsx) to display image galleries.
 
-## Contributing
+```
+<ImageGrid
+  columns={3} // Accepts 2, 3, or 4 columns
+  images={[
+    { src: "/photos/photo1.jpg", alt: "Photo1", href: "#" }, // 'href' is optional
+    { src: "/photos/photo2.jpg", alt: "Photo2", href: "#" },
+    { src: "/photos/photo3.jpg", alt: "Photo3"},
+  ]}
+/>
+```
 
-Contributions are welcome! To get involved, just push your code to the repo. Whether you're enhancing existing features or adding new ones, your efforts are greatly appreciated!
+Renders:
 
-## Licence
+<ImageGrid
+  columns={3}
+  images={[
+    { src: "/photos/photo1.jpg", alt: "Photo1", href: "#" },
+    { src: "/photos/photo2.jpg", alt: "Photo2", href: "#" },
+    { src: "/photos/photo3.jpg", alt: "Photo3" },
+  ]}
+/>
 
-Nextfolio is open-source and released under the MIT License.
+## Embeds
+
+### Tweets
+
+Nextfolio uses [react-tweet](https://react-tweet.vercel.app/) to embed tweets in MDX posts.
+
+```
+<StaticTweet id="1617979122625712128" />
+```
+
+Renders:
+
+<StaticTweet id="1617979122625712128" />
+
+### YouTube Videos
+
+Nextfolio uses [react-youtube](https://www.npmjs.com/package/react-youtube) to embed YouTube videos in MDX posts.
+
+```
+<YouTube videoId="wXhTHyIgQ_U" />
+```
+
+Renders:
+
+<YouTube videoId="wXhTHyIgQ_U" />
+
+### Captions
+
+Nextfolio uses [react-wrap-balancer](https://react-wrap-balancer.vercel.app/) to evenly balance captions in MDX posts.
+
+```
+<Caption>
+  Captions that flow smoothly, making your content easy to read and visually
+  appealing with a clean look.
+</Caption>
+```
+
+Renders:
+
+<Caption>
+  Captions that flow smoothly, making your content easy to read and visually
+  appealing with a clean look.
+</Caption>
+
+## Tables
+
+Nextfolio uses a custom [table component](https://github.com/1msirius/Nextfolio/blob/main/app/components/mdx.tsx#L38) to render tables in MDX posts.
+
+```
+<Table
+  data={{
+    headers: ["Title", "Description"],
+    rows: [
+      [
+        "First item",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid perspiciatis repellat amet quos.",
+      ],
+      [
+        "Second item",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid perspiciatis repellat amet quos.",
+      ],
+    ],
+  }}
+/>
+```
+
+Renders:
+
+<Table
+  data={{
+    headers: ["Title", "Description"],
+    rows: [
+      [
+        "First item",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid perspiciatis repellat amet quos.",
+      ],
+      [
+        "Second item",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid perspiciatis repellat amet quos.",
+      ],
+    ],
+  }}
+/>
+
+## Math Expressions
+
+Nextfolio allows you to render mathematical expressions in MDX posts using [KaTeX](https://katex.org/) . Simply wrap your expression in **$** to include KaTeX within your MDX content.
+
+```
+$
+\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+$
+```
+
+Renders:
+
+$
+\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+$
+
+## Callout
+
+Nextfolio uses a custom [callout component](https://github.com/1msirius/Nextfolio/blob/main/app/components/mdx.tsx#L63) to render important information in MDX posts.
+
+```
+<Callout emoji="💡">
+[Nextfolio](https://nextfolio.site) is a clean, simple, and fast portfolio built with Next.js, Tailwind CSS, and pnpm for optimal performance.
+</Callout>
+```
+
+Renders:
+
+<Callout emoji="💡">
+  [Nextfolio](https://nextfolio.site) is a clean, simple, and fast portfolio
+  built with Next.js, Tailwind CSS, and pnpm for optimal performance.
+</Callout>
+
